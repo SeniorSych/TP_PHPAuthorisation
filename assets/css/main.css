@@ -7,6 +7,8 @@
 
 
 body {
+    background-image: url("../../bg.jpg");
+    background-size: cover;
     height: 100vh;
     display: flex;
     align-items: center;
@@ -15,7 +17,7 @@ body {
 }
 
 a {
-    color: #47a75e;
+    color: #cb0162 ;
     font-weight: bold;
     text-decoration: none;
 
@@ -29,7 +31,7 @@ p{
 form {
     display: flex;
     flex-direction: column;
-    width: 400px;
+    width: 300px;
 }
 
 input{
@@ -53,6 +55,7 @@ button{
     padding: 10px;
     text-align: center;
     font-weight: bold;
+    color: #fff;
 }
 .logout{
     color: #a83969;
@@ -63,13 +66,71 @@ img {
     margin-left: auto;
     margin-right: auto;
 }
+.myform {
+    width: 350px;
+    height: 390px;
+    display: flex;
+    flex-direction: column;
+    backdrop-filter: blur(5px);
+    border: 1px solid #8A2BE2;
+    border-radius: 5px;
+    align-items: center;
+}
+.myform h4 {
+    margin-top: 30px;
+    margin-bottom: 22px;
+    font-family: poppins;
+    font-size: 20px;
+    font-weight: 300;
+    color: #fff;
+}
+.myform .login {
+    display: flex;
+    flex-direction: column;
+    width: 85%;
+}
+.login input, button {
+    margin: 10px;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 60px;
+    font-size: 16px;
+}
+.login input {
+    background-color: #ffffff2e;
+    color: #fff;
+    font-family: poppins;
+    letter-spacing: 1px;
+    text-indent: 35px;
+    background-image: url("../../user.png");
+    background-repeat: no-repeat;
+    background-size: 20px;
+    background-position: 15px;
+}
+.login input:nth-child(2) {
+    background-image: url("../../lock.png");
+}
+.login input::placeholder {
+    font-size: 14px;
+    color: #c0b4b4;
+}
+.login button {
+    background-color: #87CEEB;
+    color: #fff;
+    font-size: 17px;
+    font-family: Calibri;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+.reg {
 
-
-
-
-
-
-
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: Calibri;
+    font-size: 22px;
+    color: #fff;
+}
 
 
 

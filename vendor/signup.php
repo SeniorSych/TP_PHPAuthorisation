@@ -9,6 +9,21 @@ $email = $_POST['email'];
 $password = $_POST['password'];
 $passConfirm = $_POST['passConfirm'];
 
+$userCheck = $db->query("SELECT * FROM users 
+WHERE username = '$username'")->fetch();
+
+if (is_array($userCheck)){
+    $flag = [
+        'status' => false,
+        'errorType' => 3,
+        'message' => 'User already exists',
+        'fields' => ['username']
+    ];
+    echo json_encode($flag);
+    die();
+}
+
+
 $errorFields = [];
 
 if ($name === '') {

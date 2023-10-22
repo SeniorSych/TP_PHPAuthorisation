@@ -13,36 +13,24 @@ if ($_SESSION['user'] ?? '')
     <meta charset="UTF-8">
     <title>Авторизация и регистрация</title>
     <link rel="stylesheet" href="assets/css/main.css">
+    <!-- BOXICONS -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
+<?php require 'vendor/menu.php' ?>
 <!--Форма авторизации-->
-<div class="myform">
+<div class="myLoginForm">
     <h4>Вход в профиль</h4>
-    <div class="login">
-        <form action="vendor/signin.php" method="post">
-
-            <input type="text" name="username"  placeholder="Введите логин">
-
-            <input type="password" name="pass"  placeholder="Введите пароль">
+        <form>
+            <input  type="text" name="username" autocomplete="off" placeholder="Введите логин">
+            <input  type="password" name="password" autocomplete="off" placeholder="Введите пароль">
             <button type="submit" class="login-btn">Войти</button>
-            <div class="reg">
+            <div class="reg-log">
                 <p>
                     Нет аккаунта? - <a href="register.php">Регистрация</a>!
                 </p>
             </div>
-            <?php
-            if ($_SESSION['message'] ?? '') {
-                echo '<p class="msg"> ' . $_SESSION['message'] . ' </p>';
-            }
-            unset($_SESSION['message']);
-            ?>
+            <p class="msg none">Lorem ipsum</p>
         </form>
-    </div>
 </div>
-<script src="assets/js/jquery-3.7.0.slim.js">
-<script src="assets/js/main.js">
-
-</script>
-
-</body>
-</html>
+<?php  require 'vendor/footer.php' ?>

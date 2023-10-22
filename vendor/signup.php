@@ -6,19 +6,58 @@ require_once 'connect.php';
 $name = $_POST['name'];
 $username = $_POST['username'];
 $email = $_POST['email'];
-$pass = $_POST['pass'];
+$password = $_POST['password'];
 $passConfirm = $_POST['passConfirm'];
 
+$errorFields = [];
 
+if ($name === '') {
+    $errorFields[] = 'name';
+}
 
-if ($pass === $passConfirm)
+if ($username === '') {
+    $errorFields[] = 'username';
+}
+
+if ($email === '' || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    $errorFields[] = 'email';
+}
+
+if ($password === '') {
+    $errorFields[] = 'password';
+}
+
+if ($passConfirm === '') {
+    $errorFields[] = 'passConfirm';
+}
+
+//if (empty($_FILES['avatar']['name'])) {
+//    $errorFields[] = 'avatar';
+//}
+
+if (!empty ($errorFields)) {
+    $flag = [
+        'status' => false,
+        'errorType' => 1,
+        'message' => 'Check fields',
+        'fields' => $errorFields
+    ];
+    echo json_encode($flag);
+    die();
+}
+
+if ($password === $passConfirm)
 {
 //    $_FILES['avatar']['name']
-$path = 'uploads/'.time().$_FILES['avatar']['name'];
-    if (!move_uploaded_file($_FILES['avatar']['tmp_name'], '../'.$path))
+$avatarPath = 'uploads/'.time().$_FILES['avatar']['name'];
+    if (!move_uploaded_file($_FILES['avatar']['tmp_name'], '../'.$avatarPath))
     {
-        $_SESSION['message'] = 'Upload file error';
-        header('Location: ../register.php');
+        $flag = [
+            'status' => false,
+            'errorType' => 2,
+            'message' => 'Check avatar',
+        ];
+        echo json_encode($flag);
     }
     else
     {
@@ -26,18 +65,24 @@ $path = 'uploads/'.time().$_FILES['avatar']['name'];
 
         try
         {
-            $stmt->execute([$name, $username, $email, $pass, $path]);
+            $stmt->execute([$name, $username, $email, $password, $avatarPath]);
         }
         catch (PDOException $e)
         {
             print $e->getMessage();
         }
-        $_SESSION['message'] = 'Registration succeed';
-        header('Location: ../index.php');
+        $flag = [
+            'status' => true,
+            'message' => 'Registration succeed',
+        ];
+        echo json_encode($flag);
     }
 }
 else
 {
-    $_SESSION['message'] = 'Passwords are not same';
-    header('Location: ../register.php');
+    $flag = [
+        'status' => false,
+        'message' => 'Passwords are not same',
+    ];
+    echo json_encode($flag);
 }

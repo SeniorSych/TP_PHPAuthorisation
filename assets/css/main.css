@@ -2,9 +2,23 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    list-style: none;
 }
 
+/* Стиль ползунка прокрутки */
+::-webkit-scrollbar {
+    width: 3px; /* Ширина ползунка */
+}
 
+/* Цвет ползунка */
+::-webkit-scrollbar-thumb {
+    background-color: #888; /* Цвет ползунка */
+}
+
+/* Цвет фона ползунка */
+::-webkit-scrollbar-track {
+    background-color: #6694d7; /* Цвет фона ползунка */
+}
 
 body {
     background-image: url("../../bg.jpg");
@@ -14,6 +28,10 @@ body {
     align-items: center;
     justify-content: center;
     font-family: "Lucida Sans Unicode", sans-serif;
+}
+
+li{
+    display: inline-block;
 }
 
 a {
@@ -34,19 +52,15 @@ form {
     width: 300px;
 }
 
-input{
-    margin: 10px 0;
-    padding: 10px;
-    border: unset;
-    border-bottom: 2px solid #e3e3e3;
-    outline: none;
-}
-
 button{
     padding: 10px;
     background: #e3e3e3;
     border: unset;
     cursor: pointer;
+}
+
+.none{
+    display: none;
 }
 
 .msg {
@@ -57,8 +71,13 @@ button{
     font-weight: bold;
     color: #fff;
 }
+
 .logout{
     color: #a83969;
+}
+
+label{
+    color: #fff;
 }
 
 img {
@@ -66,7 +85,8 @@ img {
     margin-left: auto;
     margin-right: auto;
 }
-.myform {
+
+.myLoginForm {
     width: 350px;
     height: 390px;
     display: flex;
@@ -76,7 +96,24 @@ img {
     border-radius: 5px;
     align-items: center;
 }
-.myform h4 {
+
+.myRegForm {
+    width: 350px;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    backdrop-filter: blur(5px);
+    border: 1px solid #8A2BE2;
+    border-radius: 5px;
+    align-items: center;
+    overflow: auto;
+}
+
+.img-upload{
+
+}
+
+.myLoginForm h4 {
     margin-top: 30px;
     margin-bottom: 22px;
     font-family: poppins;
@@ -84,19 +121,34 @@ img {
     font-weight: 300;
     color: #fff;
 }
-.myform .login {
-    display: flex;
-    flex-direction: column;
-    width: 85%;
+
+.myRegForm h4 {
+    margin-top: 25px;
+    margin-bottom: 10px;
+    font-family: poppins;
+    font-size: 20px;
+    font-weight: 300;
+    color: #fff;
 }
-.login input, button {
+
+.myLoginForm input, button {
     margin: 10px;
     padding: 10px 15px;
-    border: none;
     border-radius: 60px;
     font-size: 16px;
+    outline: none;
 }
-.login input {
+
+.myRegForm input, button {
+    margin: 10px;
+    padding: 10px 15px;
+    border-radius: 60px;
+    font-size: 16px;
+    outline: none;
+}
+
+.myLoginForm input {
+    border: unset;
     background-color: #ffffff2e;
     color: #fff;
     font-family: poppins;
@@ -107,23 +159,73 @@ img {
     background-size: 20px;
     background-position: 15px;
 }
-.login input:nth-child(2) {
+
+.myRegForm input {
+    border: unset;
+    background-color: #ffffff2e;
+    color: #fff;
+    font-family: poppins;
+    letter-spacing: 1px;
+    text-indent: 35px;
+    background-repeat: no-repeat;
+    background-size: 20px;
+    background-position: 15px;
+}
+
+.errorField {
+    border: unset !important;
+    border-bottom: 2px solid #900202 !important;
+}
+
+.myLoginForm input:nth-child(2) {
     background-image: url("../../lock.png");
 }
-.login input::placeholder {
+
+.myLoginForm input::placeholder {
     font-size: 14px;
     color: #c0b4b4;
 }
-.login button {
-    background-color: #87CEEB;
+
+.myRegForm input::placeholder {
+    padding-left: 25px;
+    font-size: 14px;
+    color: #d0c5c5;
+}
+
+.myRegForm input[type="file"] {
+    color: transparent;
+}
+
+.myRegForm input[type="file"]::file-selector-button{
+    margin-left: 0px;
+
+    cursor: pointer;
+    background-color: #3b1e80;
+    color: white;
+    padding: 0px 30px;
+    border-radius: 60px;
+    border: none;
+}
+
+.myLoginForm button {
+    background-color: #6694d7;
     color: #fff;
     font-size: 17px;
     font-family: Calibri;
     text-transform: uppercase;
     cursor: pointer;
 }
-.reg {
 
+.myRegForm button {
+    background-color: #6694d7;
+    color: #fff;
+    font-size: 17px;
+    font-family: Calibri;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.reg-log {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -131,8 +233,139 @@ img {
     font-size: 22px;
     color: #fff;
 }
+/*Menu style*/
+/* variables */
+:root{
+    --tab-color: #191919;
+    --white-color: #fff;
+    --home-icon-color: #00f7ff;
+    --heart-icon-color: #ff0000;
+    --plus-icon-color: #adff2f;
+    --user-icon-color: #ee82ee;
+    --bell-icon-color: #ffff00;
+}
+/* ------------ MENU ------------ */
+.nav{
+    z-index: 9999;
+    backdrop-filter: blur(2px);
+    background-color: transparent;
+    width: 30em;
+    height: 4em;
+    border-radius: 2em;
+    padding: 0 2em;
+    box-shadow: 0 1em 1em rgba(0,0,0, .2);
 
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    overflow: hidden;
+}
+
+.nav__links{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.nav__link a{
+    color: var(--white-color);
+    font-size: 2.5rem;
+    opacity: 0.5;
+}
+
+.nav__light{
+    position: absolute;
+    top: 0;
+    left: 1.3em;
+    background-color: var(--white-color);
+    width: 4em;
+    height: .4em;
+    border-radius: 2px;
+
+    display: flex;
+    justify-content: center;
+
+    transition: .3s ease;
+}
+
+.nav__light::before{
+    content: '';
+    width: 5em;
+    height: 7em;
+    position: absolute;
+    top: .4em;
+    background: linear-gradient(to bottom, rgba(255,255,255, .3) -50%, rgba(255,255,255, 0) 90%);
+    clip-path: polygon(30% 0, 70% 0, 100% 100%, 0% 100%);
+}
+
+.nav__link.active a{
+    opacity: 1;
+}
+
+.nav__link.active a .bx-home-alt-2{
+    color: var(--home-icon-color);
+    text-shadow: 0 0 15px var(--home-icon-color),
+    0 0 30px var(--home-icon-color),
+    0 0 45px var(--home-icon-color),
+    0 0 60px var(--home-icon-color);
+}
+
+.nav__link:nth-child(1).active ~ .nav__light{
+    background-color: var(--home-icon-color);
+}
+
+.nav__link.active a .bx-heart{
+    color: var(--heart-icon-color);
+    text-shadow: 0 0 15px var(--heart-icon-color),
+    0 0 30px var(--heart-icon-color),
+    0 0 45px var(--heart-icon-color),
+    0 0 60px var(--heart-icon-color);
+}
+
+.nav__link:nth-child(2).active ~ .nav__light{
+    background-color: var(--heart-icon-color);
+}
+
+.nav__link.active a .bx-plus-circle{
+    color: var(--plus-icon-color);
+    text-shadow: 0 0 15px var(--plus-icon-color),
+    0 0 30px var(--plus-icon-color),
+    0 0 45px var(--plus-icon-color),
+    0 0 60px var(--plus-icon-color);
+}
+
+.nav__link:nth-child(3).active ~ .nav__light{
+    background-color: var(--plus-icon-color);
+}
+
+.nav__link.active a .bx-user{
+    color: var(--user-icon-color);
+    text-shadow: 0 0 15px var(--user-icon-color),
+    0 0 30px var(--user-icon-color),
+    0 0 45px var(--user-icon-color),
+    0 0 60px var(--user-icon-color);
+}
+
+.nav__link:nth-child(4).active ~ .nav__light{
+    background-color: var(--user-icon-color);
+}
+
+.nav__link.active a .bx-bell{
+    color: var(--bell-icon-color);
+    text-shadow: 0 0 15px var(--bell-icon-color),
+    0 0 30px var(--bell-icon-color),
+    0 0 45px var(--bell-icon-color),
+    0 0 60px var(--bell-icon-color);
+}
+
+.nav__link:nth-child(5).active ~ .nav__light{
+    background-color: var(--bell-icon-color);
+}
 
 
 
